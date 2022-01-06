@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:project1/facebook/ui/facebook_main_page.dart';
 import 'package:project1/models/user_model.dart';
 import 'package:project1/ui/instegram_main_page.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: InstegramUi(),
+    home: FacebookMainPage(),
   ));
 }
 
