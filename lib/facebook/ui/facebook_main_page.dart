@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FacebookMainPage extends StatelessWidget {
@@ -134,3 +135,96 @@ class FacebookMainPage extends StatelessWidget {
     );
   }
 }
+
+class StatefulTest extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return OmarState();
+  }
+}
+
+class OmarState extends State<StatefulWidget> {
+  String text = 'omar';
+  bool isDarkMode = false;
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+        backgroundColor: isDarkMode ? Colors.black : Colors.white,
+        appBar: AppBar(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // ternary expression
+            text = text == 'omar' ? 'hassan' : 'omar';
+
+            setState(() {});
+          },
+          child: Icon(Icons.edit),
+        ),
+        body: Container(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Text(
+                    'Light Mode',
+                    style: TextStyle(
+                        color: !isDarkMode ? Colors.black : Colors.white),
+                  ),
+                  Spacer(),
+                  Switch(
+                      value: isDarkMode,
+                      onChanged: (value) {
+                        isDarkMode = value;
+                        setState(() {});
+                      })
+                ],
+              )
+            ],
+          ),
+        ));
+  }
+}
+
+class BottomTest extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return BottomTestState();
+  }
+}
+
+class BottomTestState extends State<BottomTest> {
+  int activeIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Text(activeIndex == 0 ? 'Home Page' : 'Favourite page'),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          this.activeIndex = value;
+          setState(() {});
+        },
+        currentIndex: activeIndex,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home Page'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Favourite Page'),
+        ],
+      ),
+    );
+  }
+}
+class FavouritePage extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+   return Center(child: Text('Favourite'),);
+  }
+}
+
